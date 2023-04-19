@@ -70,26 +70,26 @@
       \global\@toproom \@colht
   	  \global\@botroom \zero\@colht
 
-      \@fpmin   \@colht      
+      \@fpmin   \@colht
     \fi
   \else
     \if@firstcolumn
       \renewcommand\textfraction{0}
-      \setlength{\textfloatsep}{0pt}	  
+      \setlength{\textfloatsep}{0pt}
 	  \global\@toproom \@colht
   	  \global\@botroom \zero\@colht
-      
+
       \@fpmin   \@colht
     \else
       \renewcommand\textfraction{0.2}
       \setlength{\textfloatsep}{1.7\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
 	  \global\@toproom \topfraction\@colht
       \global\@botroom \bottomfraction\@colht
-      
+
       \@fpmin   \floatpagefraction\@colht
     \fi
   \fi
-        \global\@topnum \c@topnumber 
+        \global\@topnum \c@topnumber
       \global\@botnum \c@bottomnumber
   \global\@colnum  \c@totalnumber
   % Floatpage bit, local:
@@ -100,8 +100,8 @@
 \renewcommand*\cleardoublepage{
   \clearpage
   \if@twoside
-    \ifodd\c@page 
-      \ifnum\c@page=1\else      
+    \ifodd\c@page
+      \ifnum\c@page=1\else
         \hbox{}\newpage
         \if@twocolumn
           \hbox{}%
@@ -175,7 +175,7 @@
 \newcommand\styleB{\rightskip=0pt plus .8\hsize\relax \parfillskip=0pt plus-.7\hsize\relax}
 
 \newcommand{\splashpicture}[1]{
-  \def\tmp{#1}  
+  \def\tmp{#1}
   \let\srsplash\tmp
   \pgfdeclareimage[width=\paperwidth, height=\paperheight]{splashimage}{./images/\tmp}
 }
@@ -212,12 +212,12 @@
 \definecolor{yellowtext}{HTML}{f9b00b}
 \definecolor{redtext}{HTML}{931004}
 \definecolor{whitetext}{gray}{0.5}
-  
+
 \definecolor{normalpage}{gray}{0.95}
 \definecolor{storyblack}{gray}{0.1}
 \definecolor{boxred}{HTML}{721a16}
 \definecolor{headred}{HTML}{5e1519}
-  
+
 \newcommand{\globalcolor}[1]{%
   \color{#1}\global\let\default@color\current@color
 }
@@ -239,7 +239,7 @@
 ]{srfont}
 \newfontfamily{\deckerfont}[
   Path = ./core/fonts/,
-  Extension = .ttf,  
+  Extension = .ttf,
   UprightFont = *-rg,
   BoldFont = *-b
 ]{dckr}
@@ -254,9 +254,9 @@
 \newfontfamily{\boxfont}[
   Path = ./core/fonts/,
   Extension = .ttf,
-  UprightFont = *-rg  
+  UprightFont = *-rg
 ]{boxfont}
-  
+
 \renewcommand{\rmdefault}{srbody}
 \renewcommand{\sfdefault}{srbody}
 
@@ -264,7 +264,7 @@
 %% GRAPHICS
 %%%
 
-\RequirePackage{pgf} 
+\RequirePackage{pgf}
 
 \pgfdeclareimage{cover-black}{./core/tikz/Cover-black.pdf}
 \pgfdeclareimage{cover-red}{./core/tikz/Cover-red.pdf}
@@ -293,32 +293,32 @@
 
 \RequirePackage{geometry}
 
-\geometry{a4paper, 
+\geometry{a4paper,
   includeheadfoot,
-  top=0cm, 
-  headheight=23mm, 
-  headsep=7mm, 
-  footskip=23mm, 
+  top=0cm,
+  headheight=23mm,
+  headsep=7mm,
+  footskip=23mm,
   bottom=7mm,
-  left=20mm, 
+  left=20mm,
   right=15mm
-} 
+}
 
 %%%%%%%%%%%%%%%%%
 %% BACKGROUND
 %%%
 
 \RequirePackage[pagecolor=normalpage]{pagecolor}
-\RequirePackage{background}
+%\RequirePackage{background}
 
-\backgroundsetup{
-  scale=1,
-  opacity=.01,
-  angle=0,
-  contents={%
-    \includegraphics[width=\paperwidth , height=\paperheight]{core/images/bgpattern.png}
-  }
-}
+% \backgroundsetup{
+%   scale=1,
+%   opacity=.01,
+%   angle=0,
+%   contents={%
+%     \includegraphics[width=\paperwidth , height=\paperheight]{core/images/bgpattern.png}
+%   }
+% }
 
 %%%%%%%%%%%%%%%%%
 %% PENALTIES
@@ -401,14 +401,14 @@
 \begin{tikzpicture}[remember picture, overlay, shift={(current page.south west)}]
 	\node[anchor=center] at (.5\paperwidth,.5\paperheight) {\pgfuseimage{#1}};
 	\node [anchor=west, text=white, font=\headerfont] at (27mm,9.5mm) {\LARGE\thepage\hspace{1cm}\large\MakeUppercase{\leftmark}\hspace{1em}\large\guillemotright};
-	\end{tikzpicture}	
+	\end{tikzpicture}
 }
 
 \newcommand{\footerright}[1]{
 	\begin{tikzpicture}[remember picture, overlay, shift={(current page.south west)}]
 	\node[anchor=center] at (.5\paperwidth,.5\paperheight) {\pgfuseimage{#1}};
 	\node [anchor=east, align=right, text=white, font=\headerfont] at (\paperwidth-27mm,9.5mm) {\large\guillemotleft\hspace{1em}\large\MakeUppercase{\leftmark}\hspace{1cm}\LARGE\thepage};
-	\end{tikzpicture}	
+	\end{tikzpicture}
 
 }
 
@@ -417,20 +417,20 @@
 %%%
 
 \fancypagestyle{plain}{
-  \fancyhf{}	
+  \fancyhf{}
   \fancyhead[LE]{
     \begin{tikzpicture}[remember picture, overlay, shift={(current page.center)}]
 	  \ifTitleSpread
 	    \suppressfloats[t]
-	    \suppressfloats[b]	  
+	    \suppressfloats[b]
 	    \node at (0,0) {\pgfuseimage{bigleftheader}};
 	    \node[anchor=south west, fill=redtext, minimum height=6mm, text=white, font=\headerfont] at (-.5\paperwidth+15mm,.5\paperheight-14mm) {\MakeUppercase{\sr@doctitle}};
 	    \draw node[anchor=west, text=white, align=left, font=\headerfont\fontsize{60}{50}\selectfont] at (-.5\paperwidth+8mm,{(.5\paperheight)-(.5\headheight)})
  {\parbox{183mm}{\styleB \nohyphens{\MakeUppercase{\leftmark}}}};
       \else
-        \node at (0,0) {\pgfuseimage{smallleftheader}};	  
+        \node at (0,0) {\pgfuseimage{smallleftheader}};
 	    \node[anchor=west, text=white, font=\headerfont] at (-.5\paperwidth+15mm,{(.5\paperheight)-((.5\headheight)-2mm)}) {\Large\guillemotright~~\normalsize\sr@doctitle~~\Large\guillemotleft};
-	  \fi	  
+	  \fi
 	\end{tikzpicture}
   }
   \fancyhead[LO]{
@@ -444,7 +444,7 @@
             \clip(-.5\paperwidth,.5\paperheight) rectangle (.5\paperwidth,{.5\paperheight-(\headheight-3mm)});
             \node[red, anchor=center, opacity=0.25] at (0,.5\paperheight) {\pgfuseimage{splashimage}};
           \end{scope}
-        } 
+        }
 	  \else
         \node at (0,0) {\pgfuseimage{smallrightheader}};
         \@ifundefined{srsplash}{}{
@@ -452,7 +452,7 @@
             \clip(-.5\paperwidth,.5\paperheight) rectangle (.5\paperwidth,{.5\paperheight-(\headheight-3mm)});
             \node[red, anchor=center, opacity=0.25] at (0,.5\paperheight) {\includegraphics[height=\paperheight, width=\paperwidth]{\srsplash}};
 	      \end{scope}
-        } 
+        }
         \node[anchor=east, align=left, text=white, font=\headerfont] at (.5\paperwidth-15mm,{(.5\paperheight)-((.5\headheight)-2mm)}) {\large\guillemotright~~\normalsize\sr@doctitle~~\Large\guillemotleft};
 	  \fi
     \end{tikzpicture}
@@ -466,7 +466,7 @@
   \fancyfoot[LO]{
     \footerright{rightfooter}
     \global\headsep=7mm
-  }  
+  }
 }
 
 %%%%%%%%%%%%%%%%%
@@ -478,7 +478,7 @@
   \fancyhead[LE]{
     \suppressfloats[t]
     \suppressfloats[b]
-    \ifTitleSpread  
+    \ifTitleSpread
       \begin{tikzpicture}[remember picture, overlay]
         \node at (.5\paperwidth-15mm,.5\headheight) {\includegraphics[width=\paperwidth, height=\headheight]{\storyleftimage}};
         \fill[fill=redtext, path fading=east, fill opacity=.8] (-15mm,0) rectangle (\paperwidth, 3);
@@ -488,7 +488,7 @@
   }
   \fancyhead[LO]{
     \suppressfloats[t]
-    \suppressfloats[b]  
+    \suppressfloats[b]
     \ifTitleSpread
       \begin{tikzpicture}[remember picture, overlay]
         \node at (.5\paperwidth-20mm,.5\headheight) {\includegraphics[width=\paperwidth, height=\headheight]{\storyrightimage}};
@@ -506,7 +506,7 @@
   \fancyfoot[LO]{
     \footerright{rightfootersimple}
     \global\headsep=7mm
-  }  
+  }
 }
 
 \pagestyle{plain}
@@ -525,7 +525,7 @@
 
 \titleformat{name=\section}[block]
   {\headerfont\huge\color{redtext}\raggedright\nohyphens}{}{0cm}{\MakeUppercase}[{\color{redtext}\nobreak\titlerule}]
-  
+
 \titleformat{name=\section,numberless}[block]
   {\headerfont\huge\color{redtext}\raggedright\nohyphens}{}{0cm}{\MakeUppercase}[{\color{redtext}\nobreak\titlerule}]
 
@@ -533,7 +533,7 @@
 \titleformat{\subsection}
   {\headerfont\Large\color{redtext}\raggedright\nohyphens}{}{0cm}{\MakeUppercase}[{\color{redtext}\nobreak\titlerule}]
 
-  
+
 \titleformat{\subsubsection}
   {\headerfont\large\raggedright\nohyphens}{}{0cm}{\MakeUppercase}[{\color{black}\nobreak\titlerule}]
 
@@ -546,7 +546,7 @@
   \let\storyauthor\tmp
   \def\tmp{#3}
   \let\storyleftimage\tmp
-  \def\tmp{#4}  
+  \def\tmp{#4}
   \let\storyrightimage\tmp
   \stchapter{#1}
 }
@@ -558,14 +558,14 @@
   \newpagecolor{storyblack}
   \globalcolor{white}
   \pagestyle{story}
-  \newgeometry{ 
+  \newgeometry{
     includeheadfoot,
-    top=0cm, 
+    top=0cm,
     bottom=7mm,
-    headheight=15cm, 
-    headsep=5mm, 
-    footskip=23mm, 
-    left=20mm, 
+    headheight=15cm,
+    headsep=5mm,
+    footskip=23mm,
+    left=20mm,
     right=15mm
   }
   \global\@topnum\z@
@@ -574,27 +574,27 @@
 }
 
 \renewcommand\chapter{
-  \cleardoublepage  
+  \cleardoublepage
   \phantomsection
   \global\TitleSpreadtrue
   \restorepagecolor
   \globalcolor{black}
   \pagestyle{plain}
-  \newgeometry{ 
+  \newgeometry{
     includeheadfoot,
-    top=0cm, 
+    top=0cm,
     bottom=7mm,
-    headheight=73mm, 
-    headsep=10mm, 
-    footskip=23mm, 
-    left=20mm, 
+    headheight=73mm,
+    headsep=10mm,
+    footskip=23mm,
+    left=20mm,
     right=15mm
   }
   \global\@topnum\z@
   \@afterindentfalse
   \secdef\@chapter\@schapter
 }
-                    
+
 \def\@chapter[#1]#2{
   \ifnum \c@secnumdepth >\m@ne
     \if@mainmatter
@@ -634,9 +634,9 @@
     width=\textwidth,
     height=12cm,
     top=0mm,
-    bottom=0mm,	
+    bottom=0mm,
     left=0mm,
-    right=0mm,    
+    right=0mm,
     opacityframe=1,
     opacityback=1,
     colframe=storyblack,
@@ -650,28 +650,28 @@
 \RequirePackage{afterpage}
 \RequirePackage{placeins}
 
-\newcommand{\drawcolimg}[1]{
+\newcommand{\drawcolimg}[2]{
   \begin{tcolorbox}[
     enhanced,
     float=ht,
     width=\columnwidth,
-    height=.99\textheight,
+    height=#1,
     top=0mm,
-    bottom=0mm,	
+    bottom=0mm,
     left=0mm,
-    right=0mm,    
+    right=0mm,
     opacityframe=1,
     opacityback=1,
     colframe=storyblack,
     coltext=white,
-    interior style={fill stretch image=#1, fill image opacity=1},
+    interior style={fill stretch image=#2, fill image opacity=1},
     interior code app={\node[anchor=center] at (frame.center) {\pgfuseimage{longpictureframe}};},
   ]
   \end{tcolorbox}
 }
 
-\newcommand{\columnimage}[1]{
- \drawcolimg{#1}
+\newcommand{\columnimage}[2]{
+ \drawcolimg{#1}{#2}
  \afterpage{\afterpage{\FloatBarrier}}
 }
 
@@ -681,19 +681,19 @@
 
 \newcommand{\sr@blckbox}[2]{
 \begin{tcolorbox}[
-enhanced, 
-fonttitle=\boxfont, 
-float=tb, 
-colback=storyblack, 
-left=2mm, 
-right=2mm, 
-bottom=6mm, top=3mm, 
-title={\color{yellowtext}\Large\MakeUppercase{#1}}, 
-width = \columnwidth, 
-arc=0mm, 
-outer arc=0mm, 
-colframe=storyblack, 
-attach boxed title to top left={yshift=-1mm}, 
+enhanced,
+fonttitle=\boxfont,
+float=tb,
+colback=storyblack,
+left=2mm,
+right=2mm,
+bottom=6mm, top=3mm,
+title={\color{yellowtext}\Large\MakeUppercase{#1}},
+width = \columnwidth,
+arc=0mm,
+outer arc=0mm,
+colframe=storyblack,
+attach boxed title to top left={yshift=-1mm},
 boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=storyblack, outer arc=0mm}, underlay boxed title={\fill[storyblack] ($(title.north east)+(-2mm, 0mm)$) -- ($(title.south east)+(-2mm, 0mm)$) -- ($(title.south east)+(2mm, 0mm)$) -- ++(2cm, 0mm) -- ($(title.north east)+(2mm, 0mm)$) -- cycle;}
 ]
 \centering
@@ -703,19 +703,19 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 
 \newcommand{\sr@dblblckbox}[2]{
 \begin{tcolorbox}[
-enhanced, 
-fonttitle=\boxfont, 
-float*=tb, 
-colback=storyblack, 
-left=2mm, 
-right=2mm, 
-bottom=6mm, top=3mm, 
-title={\color{yellowtext}\Large\MakeUppercase{#1}}, 
-width = \textwidth, 
-arc=0mm, 
-outer arc=0mm, 
-colframe=storyblack, 
-attach boxed title to top left={yshift=-1mm}, 
+enhanced,
+fonttitle=\boxfont,
+float*=tb,
+colback=storyblack,
+left=2mm,
+right=2mm,
+bottom=6mm, top=3mm,
+title={\color{yellowtext}\Large\MakeUppercase{#1}},
+width = \textwidth,
+arc=0mm,
+outer arc=0mm,
+colframe=storyblack,
+attach boxed title to top left={yshift=-1mm},
 boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=storyblack, outer arc=0mm}, underlay boxed title={\fill[storyblack] ($(title.north east)+(-2mm, 0mm)$) -- ($(title.south east)+(-2mm, 0mm)$) -- ($(title.south east)+(2mm, 0mm)$) -- ++(2cm, 0mm) -- ($(title.north east)+(2mm, 0mm)$) -- cycle;}
 ]
 \centering
@@ -725,12 +725,12 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 
 \newcommand{\sr@lbox}[1]{
   \begin{tcolorbox}[
-	enhanced,	
+	enhanced,
 	before={\vspace{1em}\hspace{-32mm}},
 	top=4mm,
-    bottom=4mm,	
+    bottom=4mm,
 	left=25mm,
-	right=5mm,    
+	right=5mm,
     opacityframe=1,
     opacityback=1,
     interior style={left color=boxred,right color=redtext, fill plain image=./core/images/bgpattern.png, fill image opacity=0.1},
@@ -745,7 +745,7 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 		\node[anchor=east, opacity=.25] at ($(frame.north east) + (-10mm,-.5mm)$) {\includegraphics[height=1.5mm, width=30mm]{./core/images/pattern.png}};
     },
     boxrule=2mm,
-    arc is angular,    
+    arc is angular,
     arc=6mm,outer arc=7mm
     ]
     #1
@@ -756,7 +756,7 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
   \begin{tcolorbox}[
 	enhanced,
     top=4mm,
-    bottom=4mm,	
+    bottom=4mm,
 	left=5mm,
     right=25mm,
 	opacityframe=1,
@@ -774,7 +774,7 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
     coltext=white,
     text width=\dimexpr\columnwidth-7mm,
     boxrule=2mm,
-  	arc is angular,    
+  	arc is angular,
     arc=6mm,outer arc=7mm]
     #1
     \end{tcolorbox}
@@ -784,9 +784,9 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 \begin{tcolorbox}[
 	enhanced,
 	top=4mm,
-    bottom=4mm,	
+    bottom=4mm,
 	left=5mm,
-	right=25mm,    
+	right=25mm,
     opacityframe=1,
     opacityback=1,
     interior style={left color=redtext,right color=boxred, fill plain image=./core/images/bgpattern.png, fill image opacity=0.1},
@@ -801,7 +801,7 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 		\node[anchor=west, opacity=.25] at ($(frame.north west) + (10mm,-.5mm)$) {\includegraphics[height=1.5mm, width=30mm]{./core/images/pattern.png}};
     },
     boxrule=2mm,
-    arc is angular,    
+    arc is angular,
     arc=6mm,outer arc=7mm,
     float*=tb,
     every float=\hspace{-7mm}
@@ -814,9 +814,9 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 \begin{tcolorbox}[
 	enhanced,
 	top=4mm,
-    bottom=4mm,	
+    bottom=4mm,
 	left=25mm,
-	right=5mm,    
+	right=5mm,
     opacityframe=1,
     opacityback=1,
     interior style={left color=boxred,right color=redtext, fill plain image=./core/images/bgpattern.png, fill image opacity=0.1},
@@ -831,36 +831,36 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 		\fill[storyblack] ($(frame.north east) + (-7mm,1mm)$) -- ++(0mm, -2mm) -- ++(-45:9.9mm) -- ++(0mm, 2mm) -- cycle;
 		\node[anchor=east, opacity=.25] at ($(frame.north east) + (-10mm,-.5mm)$) {\includegraphics[height=1.5mm, width=30mm]{./core/images/pattern.png}};
     },
-    arc is angular,    
+    arc is angular,
     arc=6mm,outer arc=7mm,
     float*=tb,
     every float=\hspace{-25mm}
-    ] 
+    ]
     #1
     \end{tcolorbox}
 }
 
 \newcommand{\sr@examplebox}[1]{
   \begin{tcolorbox}[
-  enhanced, 
-  float, 
-  colback=storyblack, 
-  left=3mm, 
-  right=5mm, 
-  bottom=3mm, 
+  enhanced,
+  float,
+  colback=storyblack,
+  left=3mm,
+  right=5mm,
+  bottom=3mm,
   top=5mm,
   height=30mm,
   height plus=\textheight-30mm,
-  boxrule=1pt, 
-  title={\headerfont\color{yellowtext}\Large\MakeUppercase{\srbb@example}}, 
-  width=\columnwidth, 
-  arc=5mm, 
-  outer arc=5mm, 
-  colframe=storyblack, 
-  colback=white,  
+  boxrule=1pt,
+  title={\headerfont\color{yellowtext}\Large\MakeUppercase{\srbb@example}},
+  width=\columnwidth,
+  arc=5mm,
+  outer arc=5mm,
+  colframe=storyblack,
+  colback=white,
   arc is angular,
-  attach boxed title to top left={xshift=5mm}, 
-  boxed title style={enhanced, opacityframe=0, opacityback=0, left= 1mm, arc=0mm, top=2mm, bottom=1mm, outer arc=0mm, boxrule=1pt}, 
+  attach boxed title to top left={xshift=5mm},
+  boxed title style={enhanced, opacityframe=0, opacityback=0, left= 1mm, arc=0mm, top=2mm, bottom=1mm, outer arc=0mm, boxrule=1pt},
   underlay boxed title={
   \fill[storyblack] (title.north west) -- ++(-3.5mm, 0mm) -- ++(-135:5mm) -- ($(frame.south west) + (-2mm, 25mm)$) -- ++(-45:3mm) -- ($(frame.north west)+(1pt,-5mm)$) -- ++(45:7mm) -- ($(title.south west)+(1mm, -1pt)$) -- ($(title.south west)+(0mm, -1pt)$) -- ($(frame.north east)+(-15mm, -1pt)$) -- ++(135:3.2mm) -- ($(title.south east)+(20mm,2mm)$) -- ++(135:10.5mm) -- cycle;
   }
@@ -871,25 +871,25 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 
 \newcommand{\sr@dblexamplebox}[1]{
   \begin{tcolorbox}[
-  enhanced, 
-  float*, 
-  colback=storyblack, 
-  left=3mm, 
-  right=5mm, 
-  bottom=3mm, 
+  enhanced,
+  float*,
+  colback=storyblack,
+  left=3mm,
+  right=5mm,
+  bottom=3mm,
   top=5mm,
   height=30mm,
   height plus=\textheight-30mm,
-  boxrule=1pt, 
-  title={\headerfont\color{yellowtext}\Large\MakeUppercase{\srbb@example}}, 
-  width=\textwidth, 
-  arc=5mm, 
-  outer arc=5mm, 
-  colframe=storyblack, 
-  colback=white,  
+  boxrule=1pt,
+  title={\headerfont\color{yellowtext}\Large\MakeUppercase{\srbb@example}},
+  width=\textwidth,
+  arc=5mm,
+  outer arc=5mm,
+  colframe=storyblack,
+  colback=white,
   arc is angular,
-  attach boxed title to top left={xshift=5mm}, 
-  boxed title style={enhanced, opacityframe=0, opacityback=0, left= 1mm, arc=0mm, top=2mm, bottom=1mm, outer arc=0mm, boxrule=1pt}, 
+  attach boxed title to top left={xshift=5mm},
+  boxed title style={enhanced, opacityframe=0, opacityback=0, left= 1mm, arc=0mm, top=2mm, bottom=1mm, outer arc=0mm, boxrule=1pt},
   underlay boxed title={
   \fill[storyblack] (title.north west) -- ++(-3.5mm, 0mm) -- ++(-135:5mm) -- ($(frame.south west) + (-2mm, 25mm)$) -- ++(-45:3mm) -- ($(frame.north west)+(1pt,-5mm)$) -- ++(45:7mm) -- ($(title.south west)+(1mm, -1pt)$) -- ($(title.south west)+(0mm, -1pt)$) -- ($(frame.north east)+(-15mm, -1pt)$) -- ++(135:3.2mm) -- ($(title.south east)+(20mm,2mm)$) -- ++(135:10.5mm) -- cycle;
   }
@@ -928,7 +928,7 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
   \boxfont
   \ifthenelse{\isempty{#1}}{
     \ifodd\c@page
-      \sr@rdblbox{\BODY}  
+      \sr@rdblbox{\BODY}
     \else
       \sr@ldblbox{\BODY}
     \fi
@@ -950,14 +950,14 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 %%%
 
 \NewEnviron{srtable}[2]{
-  \rowcolors{1}{\ifnumless{\rownum}{2}{black}{storyblack}}{storyblack!80!white}  
+  \rowcolors{1}{\ifnumless{\rownum}{2}{black}{storyblack}}{storyblack!80!white}
   \arrayrulecolor{yellowtext}
   \color{white}\small
   \begin{tabularx}{\textwidth}{#1}
   \toprule
   \belowrulesepcolor{black}
   #2\\
-  \aboverulesepcolor{black}   
+  \aboverulesepcolor{black}
   \bottomrule
   \BODY
   \toprule
@@ -974,7 +974,7 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
   \small
   \par
   \begin{itemize}[
-  leftmargin=1.2em, 
+  leftmargin=1.2em,
   itemsep=-1ex,
   label={\begin{tcolorbox}[valign=center, halign=center,hbox,boxsep=-3.7mm, boxrule=0mm,colback=black, square, circular arc] {\color{normalpage}\bfseries\textgreater}	\end{tcolorbox}}
   ]
@@ -1054,13 +1054,13 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
     enhanced,
     before=\hspace{-25mm},
     top=4mm,
-    bottom=4mm,	
+    bottom=4mm,
     left=25mm,
-    right=25mm,    
+    right=25mm,
     opacityframe=1,
     opacityback=1,
     colback=boxred,
-    interior style={fill plain image=./core/images/bgpattern.png, fill image opacity=0.1},
+    %interior style={fill plain image=./core/images/bgpattern.png, fill image opacity=0.1},
     colframe=storyblack,
     coltext=white,
     text width=\textwidth-7mm,
@@ -1068,14 +1068,14 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
   ]
   \begin{multicols*}{2}[{\color{yellowtext}\Huge Impressum}]
   \color{white}\normalsize
-    
+
   \textbf{\srbb@mainauthor:} \@author\\
   \textbf{\srbb@texts:} \sr@writers\\
   \textbf{\srbb@cover:} \sr@coverartist\\
   \textbf{\srbb@illustrations:} \sr@artists
   \end{multicols*}
   \begin{center}
-  {\bfseries This template was created for hobbyists and is NOT to be used for commercial purposes.}  
+  {\bfseries This template was created for hobbyists and is NOT to be used for commercial purposes.}
   \par
     The Topps Company, Inc. has sole ownership of the names, logo, artwork, marks, photographs, sounds, audio, video and/or any proprietary material used in connection with the game Shadowrun. The Topps Company, Inc. has granted permission to \@author ~to use such names, logos, artwork, marks and/or any proprietary materials for promotional and informational purposes on its website but does not endorse, and is not affiliated with \@author ~in any official capacity whatsoever.
     \par
@@ -1108,7 +1108,8 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 %%
 %%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage[hidelinks]{hyperref}
+%\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%
 %%
@@ -1159,5 +1160,5 @@ boxed title style={arc=0mm, top=2mm, bottom=1mm, colframe=storyblack, colback=st
 
 \indexsetup{level=\section*,toclevel=chapter}
 \makeindex[options= -s ./index_style.ist, intoc]
-\AtEndDocument{\cleardoublepage\restorepagecolor\globalcolor{black}\pagestyle{plain}\printindex}
+%\AtEndDocument{\cleardoublepage\restorepagecolor\globalcolor{black}\pagestyle{plain}\printindex}
 \frontmatter
